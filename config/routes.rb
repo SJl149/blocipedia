@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'welcome/index'
 
-  get 'welcome/about'
+  devise_for :users
+
+  get 'about' => 'welcome#about'
+
+  authenticated :user do
+    resources :wikis
+    root 'wikis#index', as: :authenticate_root
+  end
 
   root 'welcome#index'
 
