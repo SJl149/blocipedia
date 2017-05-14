@@ -34,8 +34,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.user = current_user
 
+    authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki was saved successfully."
       redirect_to @wiki

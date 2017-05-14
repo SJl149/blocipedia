@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
+
+  after_initialize { self.role ||= :standard }
+
+  enum role: [:standard, :premium, :admin]
 end
