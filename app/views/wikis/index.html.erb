@@ -5,9 +5,7 @@
   </div>
 </div>
 <div class="row">
-  <p class="lead text-center">List of wikis</p>
-  <%= @wikis.each do |wiki| %>
-    <h4><%= wiki.title %></h4>
-    <p><%= wiki.body %></p>
+  <% @wikis.each do |wiki| %>
+    <h3><%= link_to wiki.title, wiki %></h3>
   <% end %>
 </div>
