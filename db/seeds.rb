@@ -8,6 +8,16 @@
   user.skip_confirmation!
   user.save!
 end
+# Create premium user
+user = User.new(
+  email: 'premium@money.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 1
+)
+user.skip_confirmation!
+user.save!
+
 users = User.all
 
 # Create Wikis
@@ -19,6 +29,14 @@ users = User.all
   )
   wiki.save!
 end
+
+wiki = Wiki.new(
+  user: users.last,
+  title: Faker::Lorem.unique.sentences,
+  body: Faker::Lorem.paragraphs + Faker::Lorem.paragraphs,
+  private: true
+)
+wiki.save!
 
 puts "Seed finished"
 puts "#{User.count} users created"
