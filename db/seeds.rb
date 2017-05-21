@@ -24,16 +24,16 @@ users = User.all
 50.times do
   wiki = Wiki.new(
     user: users.sample,
-    title: Faker::Lorem.unique.sentences,
-    body: Faker::Lorem.paragraphs + Faker::Lorem.paragraphs
+    title: Faker::Lorem.unique.sentence,
+    body: Faker::Lorem.paragraph(6) + Faker::Lorem.paragraph(6)
   )
   wiki.save!
 end
 
 wiki = Wiki.new(
   user: users.last,
-  title: Faker::Lorem.unique.sentences,
-  body: Faker::Lorem.paragraphs + Faker::Lorem.paragraphs,
+  title: Faker::Lorem.unique.sentence,
+  body: Faker::Lorem.paragraph(6) + Faker::Lorem.paragraph(6),
   private: true
 )
 wiki.save!

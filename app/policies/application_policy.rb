@@ -7,8 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    true
-    # record.private == false || (record.private == true && record.user == user)
+    record.private == false || (record.private == true && record.user == user)
   end
 
   def show?

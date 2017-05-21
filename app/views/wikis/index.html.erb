@@ -5,7 +5,7 @@
     <% if current_user.standard? %>
       <%= link_to 'Upgrade', new_charge_path, :class => 'pull-right btn btn-info btn-lg' %>
     <% else %>
-      <%= link_to 'Downgrade', charge_path(1), :class => 'pull-right btn btn-info btn-lg' %>
+      <%= link_to 'Downgrade', downgrade_path, :class => 'pull-right btn btn-info btn-lg' %>
     <% end %>
   </div>
   <div class="row justify-content-center">

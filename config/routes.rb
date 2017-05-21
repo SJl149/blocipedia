@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
 
-  resources :charges, only: [:new, :create, :destroy]
+  get 'downgrade' => 'charges#downgrade'
+
+  resources :charges, only: [:new, :create]
 
   authenticated :user do
     resources :wikis
