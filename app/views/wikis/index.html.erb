@@ -1,11 +1,19 @@
 <div class="container">
   <div class="row">
     <h1 class="text-center">My Wikis</h1>
+    <%= link_to 'Create Wiki', new_wiki_path, :class => 'pull-right btn btn-success btn-lg' %>
+    <% if current_user.standard? %>
+      <%= link_to 'Upgrade', new_charge_path, :class => 'pull-right btn btn-info btn-lg' %>
+    <% else %>
+      <%= link_to 'Downgrade', downgrade_path, :class => 'pull-right btn btn-info btn-lg' %>
+    <% end %>
   </div>
   <div class="row justify-content-center">
     <div class="col-4">
       <% @wikis.each do |wiki| %>
-        <h3><%= link_to wiki.title, wiki %></h3>
+        <% if policy(wiki).index? %>
+          <h3><%= link_to wiki.title, wiki %></h3>
+        <% end %>
       <% end %>
     </div>
     <div class="col-4">
