@@ -8,12 +8,23 @@
   user.skip_confirmation!
   user.save!
 end
+
 # Create premium user
 user = User.new(
   email: 'premium@money.com',
   password: 'password',
   password_confirmation: 'password',
   role: 1
+)
+user.skip_confirmation!
+user.save!
+
+# Create admin user
+user = User.new(
+  email: 'admin@master.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 2
 )
 user.skip_confirmation!
 user.save!

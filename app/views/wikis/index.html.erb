@@ -4,11 +4,11 @@
     <%= link_to 'Create Wiki', new_wiki_path, :class => 'pull-right btn btn-success btn-lg' %>
     <% if current_user.standard? %>
       <%= link_to 'Upgrade', new_charge_path, :class => 'pull-right btn btn-info btn-lg' %>
-    <% else %>
-      <%= link_to 'Downgrade', downgrade_path, :class => 'pull-right btn btn-info btn-lg' %>
+    <% elsif current_user.premium? %>
+      <%= link_to 'Downgrade', downgrade_path, :class => 'pull-right btn btn-info btn-lg', data: {confirm: 'Private wikis will become public. Are you sure you want to downgrade your account?'} %>
     <% end %>
   </div>
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col-4">
       <% @wikis.each do |wiki| %>
         <% if policy(wiki).index? %>

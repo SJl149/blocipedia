@@ -31,12 +31,25 @@ class ChargesController < ApplicationController
 
   def downgrade
     current_user.update_attribute( :role, :standard)
+    make_public
     if current_user.standard?
       flash[:notice] = "#{current_user.email} has been downgraded successfully."
       redirect_to authenticate_root_path(current_user)
     else
       flash.now[:alert] = "There was an error downgrading your account."
       redirect_to authenticate_root_path(current_user)
+    end
+  end
+
+  def make_public
+    @wikis = current_user.wikis.where(user_id: current_user.id)
+    if @wikis
+      @wikis.each do |wiki|
+        wiki.update_attribute(:private, false)
+      end
+      flash[:warning] = "Private wikis for #{current_user.email} are now public!"
+    else
+      flash[:notice] = "#{current_user.email} has no private wikis to make public."
     end
   end
 end
