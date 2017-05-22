@@ -29,11 +29,9 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
-
+  
     authorize @wiki
-    if @wiki.save
+    if @wiki.update(wiki_params)
       flash[:notice] = "Wiki was saved successfully."
       redirect_to @wiki
     else
