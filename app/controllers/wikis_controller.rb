@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+  include WikisHelper
+  
   def index
     @wikis = Wiki.all
   end
@@ -29,7 +31,7 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-  
+
     authorize @wiki
     if @wiki.update(wiki_params)
       flash[:notice] = "Wiki was saved successfully."

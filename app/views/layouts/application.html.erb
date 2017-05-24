@@ -8,31 +8,41 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="container">
-      <ul class="nav nav-tabs">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <div class="pull-right" "user-info">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <ul class="nav nav-tabs">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
           <% if user_signed_in? %>
-            Signed in as: <strong><%= current_user.email %></strong> |
-            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+            <li class="navbar-text navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>: <strong ><%= current_user.email %></strong></li>
+            <li class="navbar-right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-tabs' %></li>
+            <% if current_user.standard? %>
+              <li class="navbar-right"><%= link_to 'Upgrade', new_charge_path %></li>
+            <% elsif current_user.premium? %>
+              <li class="navbar-right"><%= link_to 'Downgrade', downgrade_path, data: {confirm: 'Private wikis will become public. Are you sure you want to downgrade your account?'} %></li>
+            <% end %>
+            <li class="navbar-right"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-tabs' %></li>
           <% else %>
-            <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %> -
-            <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
+            <li class="navbar-right"><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li class="navbar-right"><%= link_to "Sign In", new_user_session_path %></li>
           <% end %>
-        </div>
-      </ul>
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="container">
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+        <% elsif flash[:alert] %>
+          <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
 
       <%= yield %>
     </div>

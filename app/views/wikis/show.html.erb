@@ -1,15 +1,16 @@
 <div class="container">
-  <div class="col-md-8">
-    <h1><%= @wiki.title %></h1>
-    <p><%= @wiki.body %></p>
+  <div class="col-md-10 show">
+      <h1><%= @wiki.title %></h1>
+      <p><%= markdown(@wiki.body) %></p>
   </div>
-  <div class="col-md-6">
-    <div class="btn-group btn-group-justified">
-      <%= link_to "Index", authenticate_root_path, class: 'btn btn-info' %>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container">
+    <ul class="nav nav-tabs nav-justified">
+      <li><%= link_to "Index", root_path, style: 'color:#eaab23;' %></li>
       <% if policy(@wiki).update? %>
-        <%= link_to "Edit", edit_wiki_path, class: 'btn btn-warning' %>
-        <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
+        <li><%= link_to "Edit", edit_wiki_path, style: 'color:#eaab23;' %></li>
+        <li><%= link_to "Delete", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki?'}, style: 'color:#eaab23;' %></li>
       <% end %>
-    </div>
   </div>
-</div> 
+</nav>

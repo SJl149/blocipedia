@@ -14,6 +14,7 @@ group :development do
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'faker', '~> 1.7', '>= 1.7.3'
 end
 
 
@@ -45,7 +46,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'shoulda'
-  gem 'faker'
   gem 'factory_girl_rails'
   gem 'pry-rails'
 end
