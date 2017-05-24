@@ -1,4 +1,14 @@
 <div class="container">
-  <h1>Edit Wiki</h1>
-  <%= render partial: "form", locals: { wiki: @wiki }  %>
+  <div class="row text-center">
+    <h1>Edit Wiki</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= render partial: "form", locals: { wiki: @wiki }  %>
+    </div>
+    <div class="col-md-6 show">
+        <h1><%= @wiki.title %></h1>
+        <p><%= markdown(@wiki.body) %></p>
+    </div>
+  </div>
 </div>

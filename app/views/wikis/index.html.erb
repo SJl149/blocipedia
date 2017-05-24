@@ -1,12 +1,6 @@
 <div class="container">
   <div class="row">
     <h1 class="text-center">My Wikis</h1>
-    <%= link_to 'Create Wiki', new_wiki_path, :class => 'pull-right btn btn-success btn-lg' %>
-    <% if current_user.standard? %>
-      <%= link_to 'Upgrade', new_charge_path, :class => 'pull-right btn btn-info btn-lg' %>
-    <% elsif current_user.premium? %>
-      <%= link_to 'Downgrade', downgrade_path, :class => 'pull-right btn btn-info btn-lg', data: {confirm: 'Private wikis will become public. Are you sure you want to downgrade your account?'} %>
-    <% end %>
   </div>
   <div class="row">
     <div class="col-4">
@@ -16,8 +10,12 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-4">
-      <%= link_to 'Create Wiki', new_wiki_path, :class => 'btn btn-primary btn-lg' %>
-    </div>
   </div>
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+      <ul class="nav nav-tabs nav-justified">
+        <li><%= link_to 'Create Wiki', new_wiki_path, style: 'color:#eaab23;' %></li>
+      </ul>
+    </div>
+  </nav>
 </div>
