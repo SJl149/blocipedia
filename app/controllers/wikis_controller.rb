@@ -1,6 +1,4 @@
-class WikisController < ApplicationController
-  include WikisHelper
-  
+class WikisController < ApplicationController  
   def index
     @wikis = Wiki.all
   end
