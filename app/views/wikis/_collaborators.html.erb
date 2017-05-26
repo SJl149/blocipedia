@@ -1,0 +1,28 @@
+
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Access</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users = User.all %>
+    <% @users.each do |user| %>
+      <% unless user == current_user %>
+        <tr>
+          <td>Column content</td>
+          <td><%= user.email %></td>
+          <td><%= check_box_tag 'user_ids[]', user.id %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<div class="form-group">
+  <div class="col-lg-10 col-lg-offset-2">
+    <button type="reset" class="btn btn-default">Cancel</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
