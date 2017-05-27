@@ -8,21 +8,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @users = User.all %>
+    <% @users = User.where.not(id: current_user.id) %>
     <% @users.each do |user| %>
-      <% unless user == current_user %>
-        <tr>
-          <td>Column content</td>
-          <td><%= user.email %></td>
-          <td><%= check_box_tag 'user_ids[]', user.id %></td>
-        </tr>
-      <% end %>
+      <tr>
+        <td>Column content</td>
+        <td><%= user.email %></td>
+        <td>
+          <%= link_to 'Add', collaborations_path(user_id: user.id, wiki_id: wiki.id), method: :post, class: 'btn btn-success' %>
+          <%= link_to 'Remove', collaboration_path(user_id: user.id, wiki_id: wiki.id), method: :delete, class: 'btn btn-danger' %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-<div class="form-group">
-  <div class="col-lg-10 col-lg-offset-2">
-    <button type="reset" class="btn btn-default">Cancel</button>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</div>
