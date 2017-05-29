@@ -7,10 +7,12 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">
     <ul class="nav nav-tabs nav-justified">
-      <li><%= link_to "Index", root_path, style: 'color:#eaab23;' %></li>
+      <li><%= link_to " Index", root_path, class: "glyphicon glyphicon-list", style: 'color:#eaab23;' %></li>
       <% if policy(@wiki).update? %>
-        <li><%= link_to "Edit", edit_wiki_path, style: 'color:#eaab23;' %></li>
-        <li><%= link_to "Delete", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki?'}, style: 'color:#eaab23;' %></li>
+        <li><%= link_to " Edit", edit_wiki_path, class: "glyphicon glyphicon-edit", style: 'color:#eaab23;' %></li>
+      <% end %>
+      <% if policy(@wiki).destroy? %>
+        <li><%= link_to " Delete", @wiki, method: :delete, data: {confirm: 'Are you sure you want to delete this wiki?'}, class: "glyphicon glyphicon-trash", style: 'color:#eaab23;' %></li>
       <% end %>
   </div>
 </nav>

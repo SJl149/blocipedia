@@ -1,8 +1,6 @@
 class WikisController < ApplicationController
-  include WikisHelper
-  
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -46,7 +44,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
 
     if @wiki.destroy
-      flash[:notice] = '\'#{@wiki.title}\' was deleted successfully.'
+      flash[:notice] = "#{@wiki.title} was deleted successfully."
       redirect_to authenticate_root_path
     else
       flash.now[:alert] = 'There was a problem deleting the wiki.'

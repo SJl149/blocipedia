@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    record.private == false || (record.private == true && record.user == user)
+   
   end
 
   def show?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && record.user == user
+    user.present? && (user.admin? || record.user == user)
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user.present? && record.user == user
+    user.present? && (user.admin? || record.user == user)
   end
 
   def scope

@@ -1,0 +1,22 @@
+
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Add</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users = User.where.not(id: current_user.id) %>
+    <% @users.each do |user| %>
+      <tr>
+        <td>Column content</td>
+        <td><%= user.email %></td>
+        <td><%= link_to ' ', collaborations_path(user_id: user.id, wiki_id: wiki.id), method: :post, class: 'btn btn-success glyphicon glyphicon-ok' %></td>
+        <td><%= link_to ' ', collaboration_path(user_id: user.id, wiki_id: wiki.id), method: :delete, class: 'btn btn-danger glyphicon glyphicon-remove' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

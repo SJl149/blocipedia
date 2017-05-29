@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'downgrade' => 'charges#downgrade'
 
   resources :charges, only: [:new, :create]
+  resources :collaborations, only: [:create, :destroy]
 
   authenticated :user do
     resources :wikis
