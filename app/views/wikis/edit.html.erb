@@ -9,7 +9,9 @@
     <div class="col-md-6">
       <div class="show">
         <h1><%= @wiki.title %></h1>
-        <p><%= markdown(@wiki.body) %></p>
+        <div id="wiki-preview">
+          <p><%= markdown(@wiki.body) %></p>
+        </div>
       </div>
       <% if policy(@wiki).collaborators? %>
         <div class="panel panel-primary">
