@@ -15,14 +15,14 @@
  */
 @import "bootstrap-sprockets";
 
-@import "bootswatch/spacelab/variables";
+@import "bootswatch/readable/variables";
 
 @import "bootstrap";
 
 body {
   padding-top: 60px;
   padding-bottom: 60px;
-  background: radial-gradient(ellipse at center, #f7fbfc 0%,#d9edf2 40%,#add9e4 100%);
+  background: radial-gradient(ellipse at center, rgba(242,249,254,1) 0%,rgba(214,240,253,1) 100%);  
 }
 
-@import "bootswatch/spacelab/bootswatch";
+@import "bootswatch/readable/bootswatch";

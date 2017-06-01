@@ -4,13 +4,25 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= render partial: "form", locals: { wiki: @wiki }  %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit</h3>
+        </div>
+        <div class="panel-body">
+          <%= render partial: "form", locals: { wiki: @wiki }  %>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <div class="show">
-        <h1><%= @wiki.title %></h1>
-        <div id="wiki-preview">
-          <p><%= markdown(@wiki.body) %></p>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Preview</h3>
+        </div>
+        <div class="panel-body">
+          <h1><%= @wiki.title %></h1>
+          <div id="wiki-preview">
+            <p><%= markdown(@wiki.body) %></p>
+          </div>
         </div>
       </div>
       <% if policy(@wiki).collaborators? %>
@@ -18,7 +30,7 @@
           <div class="panel-heading">
             <h3 class="panel-title">Collaborators</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" id="collaborators">
             <%= render partial: "collaborators", locals: { wiki: @wiki }  %>
           </div>
         </div>

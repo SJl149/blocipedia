@@ -1,14 +1,30 @@
+
 <div class="container">
-  <h1>New Wiki</h1>
+  <div class="row text-center">
+    <h1>New Wiki</h1>
+  </div>
   <div class="row">
     <div class="col-md-6">
-      <%= render "form" %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Input</h3>
+        </div>
+        <div class="panel-body">
+          <%= render "form" %>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6 show">
-      <div id="wiki-preview">
-        <%= @wiki.body %>
+    <div class="col-md-6">
+      <div class="panel panel-primary" id="new-preview-body">
+        <div class="panel-heading">
+          <h3 class="panel-title">Preview Body</h3>
+        </div>
+        <div class="panel-body">
+          <div id="wiki-preview">
+            <p><%= @wiki.body %></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </div>

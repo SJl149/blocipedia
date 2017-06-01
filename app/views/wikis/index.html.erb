@@ -7,14 +7,14 @@
       <% @wikis.each do |wiki| %>
 
           <h3><%= link_to wiki.title, wiki %></h3>
-        
+
       <% end %>
     </div>
   </div>
   <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container">
       <ul class="nav nav-tabs nav-justified">
-        <li><%= link_to ' Create Wiki', new_wiki_path, class: "glyphicon glyphicon-pencil", style: 'color:#eaab23;' %></li>
+        <li><%= link_to ' Create', new_wiki_path, class: "glyphicon glyphicon-pencil" %></li>
       </ul>
     </div>
   </nav>

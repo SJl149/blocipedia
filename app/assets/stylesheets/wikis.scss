@@ -1,11 +1,17 @@
 // Place all the styles related to the Wikis controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.show {
+#wiki-show {
   margin-top: 25px;
   margin-bottom: 20px;
-  border: thin inset darkblue;
-  border-radius: 5px;
   padding: 50px;
-  background-color: whitesmoke;
+}
+
+#collaborators {
+  height: 200px;
+  overflow: scroll;
+}
+
+#new-preview-body {
+  height: 1000px;
 }

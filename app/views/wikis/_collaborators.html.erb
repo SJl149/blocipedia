@@ -14,8 +14,8 @@
       <tr>
         <td>Column content</td>
         <td><%= user.email %></td>
-        <td><%= link_to ' ', collaborations_path(user_id: user.id, wiki_id: wiki.id), method: :post, class: 'btn btn-success glyphicon glyphicon-ok' %></td>
-        <td><%= link_to ' ', collaboration_path(user_id: user.id, wiki_id: wiki.id), method: :delete, class: 'btn btn-danger glyphicon glyphicon-remove' %></td>
+        <td><%= link_to "", collaborations_path(user_id: user.id, wiki_id: wiki.id), method: :post, class: "glyphicon glyphicon-ok" %></td>
+        <td><%= link_to "", collaboration_path(user_id: user.id, wiki_id: wiki.id), method: :delete, class: "glyphicon glyphicon-remove" %></td>
       </tr>
     <% end %>
   </tbody>
