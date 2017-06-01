@@ -1,6 +1,7 @@
 # Create Users
 10.times do
   user = User.new(
+    username: Faker::Ancient.unique.god,
     email: Faker::Internet.email(Faker::LordOfTheRings.unique.character),
     password: 'password',
     password_confirmation: 'password'
@@ -11,6 +12,7 @@ end
 
 # Create admin user
 user = User.new(
+  username: 'Master',
   email: 'admin@master.com',
   password: 'password',
   password_confirmation: 'password',
@@ -21,6 +23,7 @@ user.save!
 
 # Create premium user
 user = User.new(
+  username: 'Premo',
   email: 'premium@money.com',
   password: 'password',
   password_confirmation: 'password',
@@ -67,12 +70,7 @@ wiki = Wiki.new(
   private: true
 )
 wiki.save!
-Collaboration.create!(
-  collaborating_users: user.sample,
-  wiki: wikis.last
-)
 
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
-puts "#{Collaboration.count} collaborations created"
