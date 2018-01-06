@@ -9,7 +9,7 @@
 
 ## Getting Started
 
-This application was built using `rails 4.2.8`.
+This application was built using `Ruby 2.4` and `rails 4.2.8`.
 
 ### Installing
 
